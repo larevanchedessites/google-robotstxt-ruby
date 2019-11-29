@@ -68,13 +68,11 @@ Dir.chdir(LIBROBOTSTXT_DIR) do
   end
 end
 
-robotslib = '/usr/local/lib/librobots'
+robotslib = "/usr/local/lib/librobots" 
 
-File.delete("#{robotslib}.dylib") if File.exist?("#{robotslib}.dylib")
-File.delete("#{robotslib}.a") if File.exist?("#{robotslib}.a")
-
-File.symlink "#{LIBROBOTSTXT_DIR}/c-build/librobots.dylib", "#{robotslib}.dylib"
-File.symlink "#{LIBROBOTSTXT_DIR}/c-build/librobots.a", "#{robotslib}.a"
+# TODO : remove this to link the lib directly from the c-build directory
+FileUtils.ln_s "#{LIBROBOTSTXT_DIR}/c-build/librobots.dylib", "#{robotslib}.dylib", force: true
+FileUtils.ln_s "#{LIBROBOTSTXT_DIR}/c-build/librobots.a", "#{robotslib}.a", force: true
 
 dir_config('robotstxt', HEADER_DIRS, LIB_DIRS)
 
