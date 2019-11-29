@@ -14,11 +14,11 @@ Gem::Specification.new do |s|
   s.authors     = ['Bastien Montois']
   s.email       = 'bastien.montois@la-revanche-des-sites.fr'
   s.files       = Dir['lib/**/*.rb']
-  s.homepage    = 'https://rubygems.org/gems/google_robotstxt_parser'
+  s.homepage    = 'https://github.com/larevanchedessites/google-robotstxt-ruby'
   s.license     = 'MIT'
 
   s.require_paths = %w[lib ext]
-  s.extensions = ['ext/google_robotstxt_parser/extconf.rb']
+  s.extensions = ['ext/robotstxt/extconf.rb']
 
   s.add_development_dependency 'bundler', '~> 2.0'
   s.add_development_dependency 'rake', '~> 10.0'
