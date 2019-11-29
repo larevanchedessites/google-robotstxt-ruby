@@ -1,0 +1,3 @@
+[submodule "ext/robotstxt/robotstxt"]
+	path = ext/robotstxt/robotstxt
+	url = https://github.com/google/robotstxt
