@@ -44,7 +44,7 @@ unless MAKE
   abort 'ERROR: GNU make is required to build Google Robotstxt Parser.'
 end
 
-CWD = File.expand_path(File.dirname(__FILE__))
+CWD = __dir__
 LIBROBOTSTXT_DIR = File.join(CWD, 'robotstxt')
 
 LIBDIR = RbConfig::CONFIG['libdir']
@@ -68,11 +68,13 @@ Dir.chdir(LIBROBOTSTXT_DIR) do
   end
 end
 
-robotslib = "/usr/local/lib/librobots" 
-unless File.file?("#{robotslib}.dylib") && File.file?("#{robotslib}.a")
-  File.symlink "#{LIBROBOTSTXT_DIR}/c-build/librobots.dylib", "#{robotslib}.dylib"
-  File.symlink "#{LIBROBOTSTXT_DIR}/c-build/librobots.a", "#{robotslib}.a"
-end
+robotslib = '/usr/local/lib/librobots'
+
+File.delete("#{robotslib}.dylib") if File.exist?("#{robotslib}.dylib")
+File.delete("#{robotslib}.a") if File.exist?("#{robotslib}.a")
+
+File.symlink "#{LIBROBOTSTXT_DIR}/c-build/librobots.dylib", "#{robotslib}.dylib"
+File.symlink "#{LIBROBOTSTXT_DIR}/c-build/librobots.a", "#{robotslib}.a"
 
 dir_config('robotstxt', HEADER_DIRS, LIB_DIRS)
 
