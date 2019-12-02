@@ -31,7 +31,8 @@ robotstxt_content = "# robotstxt.org/\n\nUser-agent: *\nDisallow: /\n\nSitemap: 
 user_agent = "GoogleBot"
 url = "https://www.bqst.fr"
 
-Robotstxt.allowed_by_robots(robotstxt_content, user_agent, url)
+allowed_by_robots(robotstxt_content, user_agent, url)
+# return true if user_agent is allowed to access url
 ```
 
 ## Todo
