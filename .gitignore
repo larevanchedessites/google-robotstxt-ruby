@@ -26,3 +26,6 @@ Gemfile.lock
 .ruby-gemset
 
 .rvmrc
+
+*.log
+Makefile
