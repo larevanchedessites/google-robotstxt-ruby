@@ -29,3 +29,5 @@ Gemfile.lock
 
 *.log
 Makefile
+*.o
+*.bundle
