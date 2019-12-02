@@ -1,11 +1,9 @@
 NOTE: This repo is still under construction, please use at your own risk. :-)
 
 # Google Robotstxt Parser C++ Library Wrapper Gem
-
 This is a unofficial Ruby gem that provides a wrapper around [Google Robotstxt Parser C++ library](https://github.com/google/robotstxt).
 
 ## Installation
-
 Add this line to your application's Gemfile:
 ```
 gem 'google_robotstxt_parser'
@@ -33,6 +31,54 @@ url = "https://www.bqst.fr"
 
 allowed_by_robots(robotstxt_content, user_agent, url)
 # return true if user_agent is allowed to access url
+```
+
+## Deploy
+If you're using [Heroku](https://www.heroku.com), you'll need [CMAKE buildpacks](https://elements.heroku.com/buildpacks/Starkast/heroku-buildpack-cmake) to build this gems. To add it to your app :
+
+```
+$ heroku buildpacks:remove heroku/ruby
+$ heroku buildpacks:add starkast/cmake
+$ heroku buildpacks:add heroku/ruby
+$ heroku buildpacks 
+=== mytool Buildpack URLs
+1. starkast/cmake
+2. heroku/ruby
+$ git push heroku master
+```
+NOTE : This is currently not working due to lack of write privilage on Heroku : 
+```
+remote:        *** extconf.rb failed ***
+remote:        Could not create Makefile due to some reason, probably lack of necessary
+remote:        libraries and/or headers.  Check the mkmf.log file for more details.  You may
+remote:        need configuration options.
+remote:        
+remote:        Provided configuration options:
+remote:         --with-opt-dir
+remote:         --without-opt-dir
+remote:         --with-opt-include
+remote:         --without-opt-include=${opt-dir}/include
+remote:         --with-opt-lib
+remote:         --without-opt-lib=${opt-dir}/lib
+remote:         --with-make-prog
+remote:         --without-make-prog
+remote:         --srcdir=.
+remote:         --curdir
+remote:        --ruby=/tmp/build_03138bb21de23f6f8ee94d7ee32ba566/vendor/ruby-2.5.3/bin/$(RUBY_BASE_NAME)
+remote:        /tmp/build_03138bb21de23f6f8ee94d7ee32ba566/vendor/ruby-2.5.3/lib/ruby/2.5.0/fileutils.rb:323:in
+remote:        `symlink': Read-only file system @ rb_file_s_symlink -
+remote:        (/tmp/build_03138bb21de23f6f8ee94d7ee32ba566/vendor/bundle/ruby/2.5.0/gems/google_robotstxt_parser-0.0.3/ext/robotstxt/robotstxt/c-build/librobots.dylib,
+remote:        /usr/local/lib/librobots.dylib) (Errno::EROFS)
+remote:        from
+remote:        /tmp/build_03138bb21de23f6f8ee94d7ee32ba566/vendor/ruby-2.5.3/lib/ruby/2.5.0/fileutils.rb:323:in
+remote:        `block in ln_s'
+remote:        from
+remote:        /tmp/build_03138bb21de23f6f8ee94d7ee32ba566/vendor/ruby-2.5.3/lib/ruby/2.5.0/fileutils.rb:1479:in
+remote:        `fu_each_src_dest0'
+remote:        from
+remote:        /tmp/build_03138bb21de23f6f8ee94d7ee32ba566/vendor/ruby-2.5.3/lib/ruby/2.5.0/fileutils.rb:321:in
+remote:        `ln_s'
+remote:         from extconf.rb:74:in `<main>'
 ```
 
 ## Todo
