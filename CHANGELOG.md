@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.0.5
+* DBUILD_SHARED_LIBS=OFF to create .so insted of .bundle on Heroku
+
 ## Version 0.0.4
 
 * Set @rpath flag in extconf to link the dylib directly from the c-build directory
