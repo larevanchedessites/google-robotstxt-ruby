@@ -68,11 +68,8 @@ Dir.chdir(LIBROBOTSTXT_DIR) do
   end
 end
 
-robotslib = "/usr/local/lib/librobots" 
-
-# TODO : remove this to link the lib directly from the c-build directory
-FileUtils.ln_s "#{LIBROBOTSTXT_DIR}/c-build/librobots.dylib", "#{robotslib}.dylib", force: true
-FileUtils.ln_s "#{LIBROBOTSTXT_DIR}/c-build/librobots.a", "#{robotslib}.a", force: true
+# Link the dylib directly from the c-build directory
+$LDFLAGS << " -Wl,-rpath,#{LIBROBOTSTXT_DIR}/c-build"
 
 dir_config('robotstxt', HEADER_DIRS, LIB_DIRS)
 
