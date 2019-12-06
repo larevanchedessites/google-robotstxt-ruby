@@ -44,8 +44,9 @@ unless MAKE
   abort 'ERROR: GNU make is required to build Google Robotstxt Parser.'
 end
 
-CWD = __dir__
-LIBROBOTSTXT_DIR = File.join(CWD, 'robotstxt')
+# CWD = __dir__
+# LIBROBOTSTXT_DIR = File.join(CWD, 'robotstxt')
+LIBROBOTSTXT_DIR = File.join('.', 'robotstxt')
 
 LIBDIR = RbConfig::CONFIG['libdir']
 INCLUDEDIR = RbConfig::CONFIG['includedir']
